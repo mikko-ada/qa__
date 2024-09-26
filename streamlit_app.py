@@ -9,7 +9,13 @@ import numpy as np
 import pandas as pd
 import json
 import math
-openai.api_key = ""
+
+# Fetch the API key from an environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+if openai.api_key is None:
+    st.error("OpenAI API key not found. Please set the OPENAI_API_KEY environment variable.")
+    st.stop()
 
 def rename_dataset_columns(dataframe):
     dataframe.columns = dataframe.columns.str.replace('[#,@,&,$,(,)]', '')

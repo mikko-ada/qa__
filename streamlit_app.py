@@ -10,10 +10,11 @@ import json
 import math
 import os
 
-# Fetch the API key from an environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
-if openai.api_key is None:
-    st.error("OpenAI API key not found. Please set the OPENAI_API_KEY environment variable.")
+# Access the API key securely
+openai.api_key = st.secrets["openai_api_key"]
+
+if not openai.api_key:
+    st.error("OpenAI API key not found. Please set it in your Streamlit secrets.")
     st.stop()
 
 def rename_dataset_columns(dataframe):

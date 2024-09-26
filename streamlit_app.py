@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import json
 import math
-openai.api_key = "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"
+openai.api_key = "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"
 
 def rename_dataset_columns(dataframe):
     dataframe.columns = dataframe.columns.str.replace('[#,@,&,$,(,)]', '')
